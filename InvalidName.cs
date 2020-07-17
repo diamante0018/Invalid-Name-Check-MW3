@@ -11,7 +11,7 @@ namespace InvalidName
             {
                 if(!canConnect(player.Name))
                 {
-                    player.Kick();
+                    Utilities.ExecuteCommand($"dropclient {player.EntRef} \"Invalid Name Buddy\"");
                 }
             };
         }
