@@ -38,7 +38,7 @@ namespace InvalidName
 
         public override EventEat OnSay3(Entity player, BaseScript.ChatType type, string name, ref string message)
         {
-            if(RegexWay(message.Replace("^", "")))
+            if(!RegexWay(message.Replace("^", "")))
             {
                 Utilities.ExecuteCommand($"dropclient {player.EntRef} \"Lame Way to Crash Clients\"");
                 return EventEat.EatGame;
@@ -49,7 +49,9 @@ namespace InvalidName
 
         public bool RegexWay(string input)
         {
-            return rx.IsMatch(input);
+            if(!string.IsNullOrEmpty(input))
+                return rx.IsMatch(input);
+            return true;
         }
     }
 }
